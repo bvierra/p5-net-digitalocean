@@ -9,8 +9,7 @@ use Moo::Role;
 use MooX::Types::MooseLike::Base qw(:all);
 use utf8;
 
-# VERSION
-our $version = '0.001';
+
 has ua => (
   is => 'lazy'
 );
@@ -18,7 +17,7 @@ has ua => (
 has agent => (
   isa     => Str,
   is      => 'rw',
-  default => 'Net::DigitalOcean/'.$version
+  default => 'Net::DigitalOcean/'
 );
 
 sub _build_ua {

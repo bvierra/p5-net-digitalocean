@@ -24,4 +24,14 @@ sub droplet_list {
   return $self->make_request(GET => '/droplets');
 }
 
+sub droplet_delete {
+  my ($self, $id) = @_;
+  $id = int($id);
+
+  return { status_code => "428", status_line => "428 HTTP_PRECONDITION_REQUIRED (RETURNED FROM Net::DigitalOcean::Role::Droplets - missing Droplet ID to delete)" }
+    if !$id;
+
+  return $self->make_request(DELETE => "/droplets/$id");
+}
+
 1;
