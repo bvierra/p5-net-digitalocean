@@ -9,6 +9,7 @@ use Moo::Role;
 use MooX::Types::MooseLike::Base qw(:all);
 use utf8;
 
+# VERSION
 
 has ua => (
   is => 'lazy'

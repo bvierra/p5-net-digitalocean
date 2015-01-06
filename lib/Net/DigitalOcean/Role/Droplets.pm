@@ -12,11 +12,10 @@ requires 'make_request';
 sub droplet_create {
   my ($self,$opts) = @_;
 
-  print "droplet_create\n";
-  print "REF: ".ref($opts)."\n";
-  use Data::Dumper;
-  print Dumper $opts;
+  return { status_code => "428", status_line => "428 HTTP_PRECONDITION_REQUIRED (RETURNED FROM Net::DigitalOcean::Role::Droplets - missing required option)" }
+    if (!$opts->{name} || !$opts->{region} || !$opts->{size} || !$opts->{image});
 
+  return $self->make_requtest(POST => '/droplets', $opts);
 }
 
 sub droplet_list {
@@ -32,6 +31,16 @@ sub droplet_delete {
     if !$id;
 
   return $self->make_request(DELETE => "/droplets/$id");
+}
+
+sub droplet_get {
+  my ($self, $id) = @_;
+  $id = int($id);
+
+  return { status_code => "428", status_line => "428 HTTP_PRECONDITION_REQUIRED (RETURNED FROM Net::DigitalOcean::Role::Droplets - missing Droplet ID to get)" }
+    if !$id;
+
+  return $self->make_request(GET => "/droplets/$id");
 }
 
 1;

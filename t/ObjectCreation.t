@@ -18,6 +18,7 @@ my @droplet_methods = qw/
   droplet_create
   droplet_list
   droplet_delete
+  droplet_get
 /;
 
 for (

@@ -11,6 +11,8 @@ use utf8;
 with 'Net::DigitalOcean::Role::UserAgent';
 with 'Net::DigitalOcean::Role::Droplets';
 
+# VERSION
+
 # ABSTRACT: Net::Digest allows you to interact with DigitalOcean's API v2 (using an API Token)
 
 has api_base_url => (
